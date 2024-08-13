@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SizePowerUp : MonoBehaviour
@@ -29,7 +30,7 @@ public class SizePowerUp : MonoBehaviour
         else if (powerUpType == PowerUpType.Shrink)
         {
             player.transform.localScale = originalScale / sizeMultiplier;
-            Debug.Log("player has shrunk!");
+            Debug.Log("player  shrunk!");
         }
 
     
