@@ -84,7 +84,7 @@ public class RoombaVacuum : MonoBehaviour
         if (collision.collider.CompareTag("Player") && collision.contacts[0].normal.y > 0.5f)
         {
             jumpCount++;
-            Debug.Log("Player jumped on Roomba " + jumpCount + " times");
+           // Debug.Log("Player jumped on Roomba " + jumpCount + " times");
 
             if (jumpCount >= 2)
             {

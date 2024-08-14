@@ -25,7 +25,7 @@ public class BookStairs : MonoBehaviour
     {
         if (snapped) return;
 
-        /*f the book has not yet snapped,  check the book's current vertical position (transform.position.y)
+        /*if the book has not yet snapped,  check the book's current vertical position (transform.position.y)
          against the vertical position of the LandingStairs (LandingStairs.position.y).*/ 
         if (transform.position.y < LandingStairs.position.y)  
         {
@@ -36,7 +36,7 @@ public class BookStairs : MonoBehaviour
     private void SnapToLandingPoint(Transform landingPoint)
     {
         //first, set the book's rb to be kinematic to stops the physics simulation for the Rigidbody, (frreezing the book in place)
-       //  then set the book’s position and rotation to match the landing point 
+        //  then set the book’s position and rotation to match the landing point 
         rb.isKinematic = true;
         transform.position = landingPoint.position;
         transform.rotation = landingPoint.rotation;
