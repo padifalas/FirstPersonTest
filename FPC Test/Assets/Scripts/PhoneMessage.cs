@@ -2,45 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
 
 public class PhoneMessage : MonoBehaviour
 {
-    public GameObject floatingMessage; 
-    public float detectionRadius = 5f; 
-    public GameObject player;
-    // Start is called before the first frame update
-    void Start()
-    {
-        player = GameObject.FindGameObjectWithTag("Player");
-        
+    public Transform player; 
+    public float distanceFromPhone = 1f; 
+    public GameObject messagePanel; 
 
-        if (floatingMessage != null)
+    private void Start()
+    {
+        messagePanel.SetActive(false); 
+    }
+
+    private void Update()
+    {
+        float distance = Vector3.Distance(player.position, transform.position);
+        if (distance < distanceFromPhone)
         {
-            floatingMessage.SetActive(false);
+            messagePanel.SetActive(true); 
+            transform.LookAt(player); 
+        }
+        else
+        {
+            messagePanel.SetActive(false); 
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    
+    private void OnDrawGizmos()
     {
-        if (player != null && floatingMessage != null)
+        if (player != null)
         {
-            float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
-
-           
-            if (distanceToPlayer <= detectionRadius)
-            {
-                floatingMessage.SetActive(true);
-                
-                floatingMessage.transform.LookAt(player.transform);
-                floatingMessage.transform.Rotate(0, 180, 0); 
-            }
-            else
-            {
-                floatingMessage.SetActive(false);
-            }
+            Gizmos.color = Color.red;
+            Gizmos.DrawLine(transform.position, player.position);
         }
     }
-    }
-
+}
