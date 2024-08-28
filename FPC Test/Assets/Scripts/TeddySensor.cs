@@ -4,67 +4,60 @@ using UnityEngine;
 
 public class TeddySensor : MonoBehaviour
 {
-    public GameObject blueSensor, redSensor, greenSensor; 
     public GameObject drawer; 
-
+    
     private bool blueMatched = false;
     private bool redMatched = false;
     private bool greenMatched = false;
 
     private void OnTriggerEnter(Collider other)
     {
-        
-        if (other.gameObject.CompareTag("BlueObject") && gameObject == blueSensor)
+        // check  the object matches the correct sensor by comparing tags
+        if (other.gameObject.CompareTag("BlueObject") && gameObject.CompareTag("BlueSensor"))
         {
             blueMatched = true;
-            Debug.Log("Correct Blue teddy is on blue sensor");
+            Debug.Log("Correct blue  teddy is on blue sensor");
         }
-        
-        else if (other.gameObject.CompareTag("RedObject") && gameObject == redSensor)
+        else if (other.gameObject.CompareTag("RedObject") && gameObject.CompareTag("RedSensor"))
         {
             redMatched = true;
-            Debug.Log("Correct Red teddy is on red sensor");
+            Debug.Log("Correct red teddy is on red sensor");
         }
-      
-        else if (other.gameObject.CompareTag("GreenObject") && gameObject == greenSensor)
+        else if (other.gameObject.CompareTag("GreenObject") && gameObject.CompareTag("GreenSensor"))
         {
             greenMatched = true;
-
-            Debug.Log("Correct Green teddy is on green sensor");
+            Debug.Log("Correct green teddy is on green sensor");
         }
         else
         {
-            Debug.Log("wrong; they dont match");
+            Debug.Log("wrong; teddy not on correct sensor");
         }
 
-        // check  all sensors are correctly matched
+        // Check if all sensors are correctly matched
         if (blueMatched && redMatched && greenMatched)
         {
-            Debug.Log("draweer opens.");
-            drawer.SetActive(false); // deactivate the drawerfor now
+            Debug.Log("Drawer open.");
+            drawer.SetActive(false); // Deactivate the drawer for now
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        //start again if u move teddy away/past sensor
-        if (other.gameObject.CompareTag("BlueObject") && gameObject == blueSensor)
+        // Reset the matching state if an object is removed from the sensor
+        if (other.gameObject.CompareTag("BlueObject") && gameObject.CompareTag("BlueSensor"))
         {
             blueMatched = false;
-            Debug.Log("blue teddy removed from blue sensor");
+            Debug.Log("Blue teddy removed from blue sensor");
         }
-        else if (other.gameObject.CompareTag("RedObject") && gameObject == redSensor)
+        else if (other.gameObject.CompareTag("RedObject") && gameObject.CompareTag("RedSensor"))
         {
             redMatched = false;
-            Debug.Log("ed teddy removed from red sensor");
+            Debug.Log("Red teddy removed from red sensor");
         }
-        else if (other.gameObject.CompareTag("GreenObject") && gameObject == greenSensor)
+        else if (other.gameObject.CompareTag("GreenObject") && gameObject.CompareTag("GreenSensor"))
         {
             greenMatched = false;
-            Debug.Log("greeen teddy removed from green sensor");
+            Debug.Log("Green teddy removed from green sensor");
         }
-    }       
-
-    
+    }
 }
-

@@ -16,6 +16,12 @@ TagManager:
   - Powerup
   - Switch
   - Door
+  - RedObject
+  - BlueObject
+  - GreenObject
+  - BlueSensor
+  - RedSensor
+  - GreenSensor
   layers:
   - Default
   - TransparentFX
