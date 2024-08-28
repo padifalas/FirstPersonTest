@@ -5,6 +5,13 @@ using UnityEngine;
 
 public class FirstPersonControls1 : MonoBehaviour
 {
+    [Header("SCALE & DRAWER SETTINGS")]
+    [Space(5)]
+    public float requiredWeight = 4f; // The required weight to unlock the drawer
+    public Transform scalePosition; // Position of the scale
+    public GameObject drawer; // The drawer object to be unlocked
+    private float currentWeight = 0f; // Current weight on the scale
+    private bool drawerOpened = false; // Track if the drawer is already opened
     
     [Header("MOVEMENT SETTINGS")]
     [Space(5)]
@@ -181,7 +188,9 @@ public class FirstPersonControls1 : MonoBehaviour
         {
             heldObject.GetComponent<Rigidbody>().isKinematic = false; // Enable physics
             heldObject.transform.parent = null;
-            holdingGun = false;
+            holdingGun = false; 
+                
+            CheckWeight(); // Check the weight when an object is dropped
         }
 
         // Perform a raycast from the camera's position forward
@@ -221,6 +230,36 @@ public class FirstPersonControls1 : MonoBehaviour
             }
         }
     }
+    
+    private void CheckWeight()
+    {
+        currentWeight = 0f; // Reset current weight
+
+        // Find all objects near the scale position
+        Collider[] colliders = Physics.OverlapSphere(scalePosition.position, 1f);
+        foreach (Collider collider in colliders)
+        {
+            // Assuming each object has a "Weight" component
+            ToyWeight weightComponent = collider.GetComponent<ToyWeight>();
+            if (weightComponent != null)
+            {
+                currentWeight += weightComponent.weightValue;
+            }
+        }
+        // Check if the current weight matches the required weight
+        if (currentWeight == requiredWeight && !drawerOpened)
+        {
+            OpenDrawer();
+        }
+    }
+
+    private void OpenDrawer()
+    {
+        drawerOpened = true;
+      
+        drawer.SetActive(false); // Disable the drawer gameobject to as open for now
+    }
+
 
     public void ToggleCrouch()
     {

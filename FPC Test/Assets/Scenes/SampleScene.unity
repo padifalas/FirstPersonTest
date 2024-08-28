@@ -863,7 +863,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!54 &362958553
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2034,7 +2034,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &823394773
 Transform:
   m_ObjectHideFlags: 0
@@ -2329,7 +2329,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &961776010
 Transform:
   m_ObjectHideFlags: 0
@@ -2942,7 +2942,7 @@ GameObject:
   - component: {fileID: 1026350466}
   m_Layer: 0
   m_Name: BlueObject
-  m_TagString: BlueObject
+  m_TagString: PickUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4205,7 +4205,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1829212160
 Transform:
   m_ObjectHideFlags: 0
@@ -4964,6 +4964,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d65bd46f667d5e469a9b199fd2d8683, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requiredWeight: 4
+  scalePosition: {fileID: 0}
+  drawer: {fileID: 0}
   moveSpeed: 5
   lookSpeed: 1
   gravity: -9.81
