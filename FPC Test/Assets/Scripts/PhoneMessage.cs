@@ -35,7 +35,7 @@ public class PhoneMessage : MonoBehaviour
         if (player != null)
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawLine(transform.position, player.position);
+            Gizmos.DrawWireSphere(transform.position, distanceFromPhone);
         }
     }
 }

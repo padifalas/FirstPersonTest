@@ -9,6 +9,13 @@ TagManager:
   - Skateboard
   - Moveable
   - Shelf
+  - Red
+  - Yellow
+  - Green
+  - Collectible
+  - Powerup
+  - Switch
+  - Door
   layers:
   - Default
   - TransparentFX

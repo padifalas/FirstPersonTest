@@ -13,12 +13,12 @@ public class JumpPad : MonoBehaviour
         if (other.CompareTag("Player"))
         {
            
-            FirstPersonControls playerControls = other.GetComponent<FirstPersonControls>();
+            FirstPersonControls1 playerControls = other.GetComponent<FirstPersonControls1>();
             if (playerControls != null)
             {
                
-                playerControls.ApplyJumpBoost(boostForce);
+                playerControls.JumpPad(boostForce);
             }
         }
     }
-}
+}  
